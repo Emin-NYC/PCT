@@ -8,7 +8,6 @@ body {
   justify-content: center;
   min-height: 100vh;
   text-align: center; /* Center text */
-  font-size: 18px; /* Default font size */
 }
 
 h1 {
@@ -35,7 +34,7 @@ h1 {
   width: calc(100% - 40px); /* Adjusted width */
 }
 
-.card button {
+.card button, footer button, .neon-button {
   background-color: #E20074; /* T-Mobile Magenta */
   color: white;
   padding: 16px 32px;
@@ -47,18 +46,17 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-.card button:hover {
+.card button:hover, footer button:hover, .neon-button:hover {
   background-color: #C10062; /* Darker Magenta */
 }
 
-.card select, .card input[type="number"], .card input[type="text"] {
+.card select, .card input[type="number"] {
   width: calc(100% - 48px);
-  padding: 20px;
+  padding: 16px;
   margin: 20px 0;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 24px; /* Larger font size */
-  -webkit-appearance: none; /* Disable default iOS styling */
 }
 
 #summaryArea {
@@ -76,44 +74,6 @@ footer {
   margin-top: 60px;
 }
 
-footer button {
-  background-color: #004B93; /* T-Mobile Blue */
-  color: white;
-  padding: 16px 32px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 24px; /* Larger font size */
-  transition: background-color 0.3s ease;
-}
-
-footer button:hover {
-  background-color: #003366; /* Darker Blue */
-}
-
-.neon-button {
-  text-align: center;
-  cursor: pointer;
-  color: #fff;
-  background-color: #ff00ff;
-  border: none;
-  padding: 16px 32px;
-  font-size: 24px; /* Larger font size */
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
-              0 0 20px rgba(255, 0, 255, 0.7), 
-              0 0 30px rgba(255, 0, 255, 0.7);
-  animation: pulsate 2.5s infinite ease-in-out;
-}
-
-.neon-button:hover {
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 
-              0 0 30px rgba(255, 0, 255, 0.8), 
-              0 0 40px rgba(255, 0, 255, 0.8), 
-              0 0 50px rgba(255, 0, 255, 0.8), 
-              0 0 60px rgba(255, 0, 255, 0.8);
-}
-
 /* Responsive styles for mobile */
 @media only screen and (max-width: 600px) {
   h1 {
@@ -121,35 +81,26 @@ footer button:hover {
   }
 
   .card {
-    padding: 60px; /* Larger padding for mobile */
-    width: calc(100% - 80px); /* Adjusted width for mobile */
+    padding: 40px; /* Larger padding for mobile */
+    width: calc(100% - 40px); /* Adjusted width for mobile */
   }
 
   .card button, footer button, .neon-button {
-    padding: 24px 48px; /* Larger button padding for mobile */
+    padding: 20px 40px; /* Larger button padding for mobile */
     font-size: 32px; /* Larger font size for buttons on mobile */
   }
 
-  .card select, .card input[type="number"], .card input[type="text"] {
-    padding: 24px; /* Larger input padding for mobile */
-    width: calc(100% - 96px); /* Adjusted input width for mobile */
-    font-size: 32px; /* Larger font size for input fields on mobile */
+  .card select, .card input[type="number"] {
+    padding: 20px; /* Larger input padding for mobile */
+    width: calc(100% - 40px); /* Adjusted input width for mobile */
   }
 
   #summaryArea {
-    padding: 60px; /* Larger padding for mobile */
-    width: calc(100% - 120px); /* Adjusted width for mobile */
+    padding: 40px; /* Larger padding for mobile */
+    width: calc(100% - 40px); /* Adjusted width for mobile */
   }
 
   footer {
     margin-top: 80px; /* Increased margin top for footer on mobile */
-  }
-
-  /* Prevent zooming when clicking on input fields */
-  input[type="number"],
-  input[type="text"],
-  select {
-    font-size: 32px; /* Larger font size for input fields on mobile */
-    -webkit-text-size-adjust: 100%; /* Prevent font scaling */
   }
 }
