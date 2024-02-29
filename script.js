@@ -105,8 +105,8 @@ function generateMIInputs() {
   var numberOfLines = parseInt(document.getElementById('numberOfMILines').value) || 0;
   var miInputsContainer = document.getElementById('miInputs');
   miInputsContainer.innerHTML = '';
-  
-    miInputsContainer.innerHTML = '<h3>MI Lines: ' + numberOfLines + '</h3>';
+
+  miInputsContainer.innerHTML = '<h3>MI Lines: ' + numberOfLines + '</h3>';
 
   for (var i = 0; i < numberOfLines; i++) {
     var input = document.createElement('input');
