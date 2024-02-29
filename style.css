@@ -12,7 +12,7 @@ body {
 
 h1 {
   color: #E20074; /* T-Mobile Magenta */
-  font-size: 36px; /* Larger font size */
+  font-size: 36px; /* Default font size */
 }
 
 #questionnaire {
@@ -25,7 +25,6 @@ h1 {
 
 .card {
   background-color: white;
-  padding: 40px;
   margin: 20px auto;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -43,7 +42,7 @@ h1 {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 20px; /* Default font size */
   transition: background-color 0.3s ease;
 }
 
@@ -81,7 +80,7 @@ footer button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 20px; /* Default font size */
   transition: background-color 0.3s ease;
 }
 
@@ -96,7 +95,7 @@ footer button:hover {
   background-color: #ff00ff;
   border: none;
   padding: 16px 32px;
-  font-size: 20px;
+  font-size: 20px; /* Default font size */
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
               0 0 20px rgba(255, 0, 255, 0.7), 
@@ -112,27 +111,33 @@ footer button:hover {
               0 0 60px rgba(255, 0, 255, 0.8);
 }
 
-/* Responsive styles */
+/* Responsive styles for mobile */
 @media only screen and (max-width: 600px) {
-  .card, #summaryArea {
-    padding: 20px; /* Adjusted padding for smaller screens */
-    margin: 10px auto; /* Center the card horizontally */
-    width: calc(100% - 40px); /* Adjusted width for smaller screens */
-  }
-
-  .card button, footer button {
-    padding: 20px 32px; /* Adjust button padding for smaller screens */
-    margin: 10px 5px; /* Adjust button margin */
-    font-size: 24px; /* Adjust button font size */
-  }
-
   h1 {
-    font-size: 32px; /* Smaller font size on mobile */
+    font-size: 48px; /* Larger font size for mobile */
+  }
+
+  .card {
+    padding: 60px; /* Larger padding for mobile */
+    width: calc(100% - 80px); /* Adjusted width for mobile */
+  }
+
+  .card button, footer button, .neon-button {
+    padding: 24px 48px; /* Larger button padding for mobile */
+    font-size: 24px; /* Larger font size for buttons on mobile */
   }
 
   .card select, .card input[type="number"] {
-    width: calc(100% - 32px); /* Adjust for padding */
-    padding: 16px; /* Adjusted padding for smaller screens */
-    margin: 10px 0; /* Adjusted margin for smaller screens */
+    padding: 24px; /* Larger input padding for mobile */
+    width: calc(100% - 96px); /* Adjusted input width for mobile */
+  }
+
+  #summaryArea {
+    padding: 60px; /* Larger padding for mobile */
+    width: calc(100% - 120px); /* Adjusted width for mobile */
+  }
+
+  footer {
+    margin-top: 80px; /* Increased margin top for footer on mobile */
   }
 }
