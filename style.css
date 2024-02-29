@@ -1,0 +1,128 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #E20074;
+  /* T-Mobile Magenta */
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 10px auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.card button {
+  background-color: #E20074;
+  /* T-Mobile Magenta */
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.card button:hover {
+  background-color: #C10062;
+  /* Darker Magenta */
+}
+
+.card select,
+.card input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#summaryArea {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 20px 0;
+  background-color: #fff;
+  width: 80%;
+  max-width: 600px;
+}
+
+#results {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer button {
+  background-color: #004B93;
+  /* A contrasting color, e.g., a shade of blue */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+footer button:hover {
+  background-color: #003366;
+  /* Darker shade for hover effect */
+}
+
+ .neon-button {
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background-color: #ff00ff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
+                0 0 20px rgba(255, 0, 255, 0.7), 
+                0 0 30px rgba(255, 0, 255, 0.7);
+    transition: all 0.3s ease;
+  }
+
+  .neon-button:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 
+                0 0 30px rgba(255, 0, 255, 0.8), 
+                0 0 40px rgba(255, 0, 255, 0.8), 
+                0 0 50px rgba(255, 0, 255, 0.8), 
+                0 0 60px rgba(255, 0, 255, 0.8);
+  }
+  
+ @keyframes pulsate {
+    0% {
+      box-shadow: 0 0 3px #ff00ff, 0 0 5px #ff00ff;
+    }
+    50% {
+      box-shadow: 0 0 10px #ff00ff, 0 0 15px #ff00ff;
+    }
+    100% {
+      box-shadow: 0 0 3px #ff00ff, 0 0 5px #ff00ff;
+    }
+  }
+
+  .neon-button {
+    /* Existing styles... */
+    animation: pulsate 2.5s infinite ease-in-out;
+  }
