@@ -1,3 +1,4 @@
+/* General styles */
 body {
   font-family: 'Open Sans', Arial, sans-serif;
   background-color: #f8f8f8;
@@ -11,7 +12,7 @@ body {
 
 h1 {
   color: #E20074; /* T-Mobile Magenta */
-  font-size: 28px; /* Larger font size */
+  font-size: 36px; /* Larger font size */
 }
 
 #questionnaire {
@@ -22,28 +23,27 @@ h1 {
   width: 100%;
 }
 
-
 .card {
   background-color: white;
-  padding: 25px;
-  margin: 15px auto;
+  padding: 40px;
+  margin: 20px auto;
   border: 1px solid #ddd;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  max-width: 600px;
+  max-width: 800px;
   width: calc(100% - 40px); /* Adjusted width */
 }
 
 .card button {
   background-color: #E20074; /* T-Mobile Magenta */
   color: white;
-  padding: 12px 25px;
-  margin: 10px 5px;
+  padding: 16px 32px;
+  margin: 20px 10px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   transition: background-color 0.3s ease;
 }
 
@@ -52,36 +52,36 @@ h1 {
 }
 
 .card select, .card input[type="number"] {
-  width: calc(100% - 24px);
-  padding: 12px;
-  margin: 10px 0;
+  width: calc(100% - 48px);
+  padding: 16px;
+  margin: 20px 0;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
 
 #summaryArea {
-  padding: 20px;
+  padding: 40px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  margin: 20px 0;
+  margin: 40px 0;
   background-color: #fff;
-  width: calc(100% - 40px); /* Adjusted width */
-  max-width: 600px;
+  width: calc(100% - 80px); /* Adjusted width */
+  max-width: 800px;
 }
 
 footer {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 footer button {
   background-color: #004B93; /* T-Mobile Blue */
   color: white;
-  padding: 12px 25px;
+  padding: 16px 32px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   transition: background-color 0.3s ease;
 }
 
@@ -95,8 +95,8 @@ footer button:hover {
   color: #fff;
   background-color: #ff00ff;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 16px 32px;
+  font-size: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
               0 0 20px rgba(255, 0, 255, 0.7), 
@@ -112,22 +112,27 @@ footer button:hover {
               0 0 60px rgba(255, 0, 255, 0.8);
 }
 
+/* Responsive styles */
 @media only screen and (max-width: 600px) {
   .card, #summaryArea {
-    width: calc(100% - 40px);
-    margin: 10px;
+    padding: 20px; /* Adjusted padding for smaller screens */
+    margin: 10px auto; /* Center the card horizontally */
+    width: calc(100% - 40px); /* Adjusted width for smaller screens */
+  }
+
+  .card button, footer button {
+    padding: 12px 24px; /* Adjust button padding for smaller screens */
+    margin: 10px 5px; /* Adjust button margin */
+    font-size: 18px; /* Adjust button font size */
+  }
+
+  h1 {
+    font-size: 28px; /* Smaller font size on mobile */
   }
 
   .card select, .card input[type="number"] {
     width: calc(100% - 32px); /* Adjust for padding */
-  }
-
-  h1 {
-    font-size: 24px; /* Smaller font size on mobile */
-  }
-
-  .card button, footer button {
-    padding: 10px 20px; /* Adjust button padding for smaller screens */
-    font-size: 16px; /* Adjust button font size */
+    padding: 12px; /* Adjusted padding for smaller screens */
+    margin: 10px 0; /* Adjusted margin for smaller screens */
   }
 }
