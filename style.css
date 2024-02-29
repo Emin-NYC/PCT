@@ -126,3 +126,22 @@ footer button:hover {
     /* Existing styles... */
     animation: pulsate 2.5s infinite ease-in-out;
   }
+
+
+@media only screen and (max-width: 600px) {
+  .card, #summaryArea {
+    width: 90%; /* More width for smaller screens */
+    margin: 10px; /* Adjust margins */
+  }
+
+  .card select,
+  .card input[type="number"] {
+    width: calc(100% - 20px); /* Adjust width to account for padding */
+  }
+
+  h1 {
+    font-size: 24px; /* Smaller font size for smaller screens */
+  }
+
+  /* Any other responsive adjustments you'd like */
+}
