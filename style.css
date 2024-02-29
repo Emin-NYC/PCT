@@ -66,7 +66,7 @@ h1 {
 
 .card select,
 .card input[type="number"] {
-  width: 80%; /* Adjust width as needed */
+  width: calc(100% - 20px); /* Adjust width as needed */
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ccc;
