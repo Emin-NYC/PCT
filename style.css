@@ -8,6 +8,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   text-align: center; /* Center text */
+  font-size: 18px; /* Default font size */
 }
 
 h1 {
@@ -42,7 +43,7 @@ h1 {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 20px; /* Default font size */
+  font-size: 24px; /* Larger font size */
   transition: background-color 0.3s ease;
 }
 
@@ -50,12 +51,14 @@ h1 {
   background-color: #C10062; /* Darker Magenta */
 }
 
-.card select, .card input[type="number"] {
+.card select, .card input[type="number"], .card input[type="text"] {
   width: calc(100% - 48px);
-  padding: 16px;
+  padding: 20px;
   margin: 20px 0;
   border: 1px solid #ccc;
   border-radius: 6px;
+  font-size: 24px; /* Larger font size */
+  -webkit-appearance: none; /* Disable default iOS styling */
 }
 
 #summaryArea {
@@ -80,7 +83,7 @@ footer button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 20px; /* Default font size */
+  font-size: 24px; /* Larger font size */
   transition: background-color 0.3s ease;
 }
 
@@ -95,7 +98,7 @@ footer button:hover {
   background-color: #ff00ff;
   border: none;
   padding: 16px 32px;
-  font-size: 20px; /* Default font size */
+  font-size: 24px; /* Larger font size */
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
               0 0 20px rgba(255, 0, 255, 0.7), 
@@ -124,12 +127,13 @@ footer button:hover {
 
   .card button, footer button, .neon-button {
     padding: 24px 48px; /* Larger button padding for mobile */
-    font-size: 24px; /* Larger font size for buttons on mobile */
+    font-size: 32px; /* Larger font size for buttons on mobile */
   }
 
-  .card select, .card input[type="number"] {
+  .card select, .card input[type="number"], .card input[type="text"] {
     padding: 24px; /* Larger input padding for mobile */
     width: calc(100% - 96px); /* Adjusted input width for mobile */
+    font-size: 32px; /* Larger font size for input fields on mobile */
   }
 
   #summaryArea {
@@ -139,5 +143,13 @@ footer button:hover {
 
   footer {
     margin-top: 80px; /* Increased margin top for footer on mobile */
+  }
+
+  /* Prevent zooming when clicking on input fields */
+  input[type="number"],
+  input[type="text"],
+  select {
+    font-size: 32px; /* Larger font size for input fields on mobile */
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling */
   }
 }
