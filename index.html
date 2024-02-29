@@ -1,108 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Comparison Tool</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan Comparison Tool</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="header">Plan Comparison Tool</h1>
+    <div class="cards-container">
 
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-  </head>
+      <div id="questionnaire">
 
-  <body>
-    <div class="container">
-      <h1 class="header">Plan Comparison Tool</h1>
-      <div class="cards-container">
+        <div id="ratePlanCard" class="card">
+          <h2>Current Rate Plan</h2>
+          <p>Select your current rate plan:</p>
+          <select id="currentRatePlan"></select>
+          <button onclick="handleRatePlanSelection()">Next</button>
+        </div>
 
+        <div id="paidVoiceLinesCard" class="card" style="display:none;">
+          <h2>Number of Paid Voice Lines</h2>
+          <p>Enter current number of PAID voice lines:</p>
+          <input type="number" id="numberOfPaidVoiceLines" min="1" />
+          <button onclick="showPrevious('ratePlanCard')">Back</button>
+          <button onclick="handlePaidVoiceLinesSelection()">Next</button>
+        </div>
 
-        <div id="questionnaire">
-
-          <div id="ratePlanCard" class="card">
-            <h2>Current Rate Plan</h2>
-            <p>Select your current rate plan:</p>
-            <select id="currentRatePlan"></select>
-            <button onclick="handleRatePlanSelection()">Next</button>
-          </div>
-
-          <div id="paidVoiceLinesCard" class="card" style="display:none;">
-            <h2>Number of Paid Voice Lines</h2>
-            <p>Enter current number of PAID voice lines:</p>
-            <input type="number" id="numberOfPaidVoiceLines" min="1" />
-            <button onclick="showPrevious('ratePlanCard')">Back</button>
-            <button onclick="handlePaidVoiceLinesSelection()">Next</button>
-          </div>
-
-          <!-- Add more cards for additional questions -->
+        <!-- Add more cards for additional questions -->
 
 
-          <div id="freeVoiceLinesCard" class="card" style="display:none;">
-            <h2>Number of Free Voice Lines</h2>
-            <p>Enter current number of FREE voice lines:</p>
-            <input type="number" id="numberOfFreeVoiceLines" min="0" />
-            <button onclick="showPrevious('paidVoiceLinesCard')">Back</button>
-            <button onclick="handleFreeVoiceLinesSelection()">Next</button>
-          </div>
+        <div id="freeVoiceLinesCard" class="card" style="display:none;">
+          <h2>Number of Free Voice Lines</h2>
+          <p>Enter current number of FREE voice lines:</p>
+          <input type="number" id="numberOfFreeVoiceLines" min="0" />
+          <button onclick="showPrevious('paidVoiceLinesCard')">Back</button>
+          <button onclick="handleFreeVoiceLinesSelection()">Next</button>
+        </div>
 
-          <div id="miLinesCard" class="card" style="display:none;">
-            <h2>Number of MI Lines</h2>
-            <p>How many MI lines are on the account?</p>
-            <input type="number" id="numberOfMILines" min="0" onchange="generateMIInputs()" />
-            <div id="miInputs"></div>
-            <button onclick="showPrevious('freeVoiceLinesCard')">Back</button>
-            <button onclick="handleMISelection()">Next</button>
-          </div>
-
-
-          <div id="featuresCard" class="card" style="display:none;">
-            <h2>Total Dollar Amount in Features</h2>
-            <p>Enter the total dollar amount for features:</p>
-            <input type="number" id="totalFeaturesAmount" min="0" />
-            <button onclick="showPrevious('freeVoiceLinesCard')">Back</button>
-            <button onclick="handleFeaturesSelection()">Next</button>
-          </div>
-
-          <div id="eipCard" class="card" style="display:none;">
-            <h2>Total EIP on the Account</h2>
-            <p>How many items are financed on the account?</p>
-            <input type="number" id="numberOfFinancedDevices" min="0" max="20" onchange="generateEIPInputs()" />
-            <div id="devicesFinancedDisplay"></div>
-            <div id="eipInputs"></div>
-            <button onclick="showPrevious('featuresCard')">Back</button>
-            <button onclick="handleEIPSelection()">Next</button>
-          </div>
-
-          <div id="taxCard" class="card" style="display:none;">
-            <h2>Total Tax</h2>
-            <p>Enter the total tax amount:</p>
-            <input type="number" id="totalTaxAmount" min="0" />
-            <button onclick="showPrevious('eipCard')">Back</button>
-            <button onclick="handleTaxSelection()">Next</button>
-          </div>
-
-          <div id="finalCardSummary" class="card" style="display:none;">
-            <!-- Final card to calculate bill -->
-            <button onclick="showPrevious('taxCard')">Back</button>
-            <button onclick="calculateCurrentBill()">Calculate Bill</button>
-          </div>
+        <div id="miLinesCard" class="card" style="display:none;">
+          <h2>Number of MI Lines</h2>
+          <p>How many MI lines are on the account?</p>
+          <input type="number" id="numberOfMILines" min="0" onchange="generateMIInputs()" />
+          <div id="miInputs"></div>
+          <button onclick="showPrevious('freeVoiceLinesCard')">Back</button>
+          <button onclick="handleMISelection()">Next</button>
         </div>
 
 
-
-        <div id="summaryArea">
-          <h2>Current Plan Summary</h2>
-          <p id="summaryContent"></p>
-          <div id="totalMrcContainer" style="display:none;"></div>
-
+        <div id="featuresCard" class="card" style="display:none;">
+          <h2>Total Dollar Amount in Features</h2>
+          <p>Enter the total dollar amount for features:</p>
+          <input type="number" id="totalFeaturesAmount" min="0" />
+          <button onclick="showPrevious('freeVoiceLinesCard')">Back</button>
+          <button onclick="handleFeaturesSelection()">Next</button>
         </div>
 
-        <footer>
-          <button onclick="startOver()" class="neon-button">Reset</button>
-        </footer>
+        <div id="eipCard" class="card" style="display:none;">
+          <h2>Total EIP on the Account</h2>
+          <p>How many items are financed on the account?</p>
+          <input type="number" id="numberOfFinancedDevices" min="0" max="20" onchange="generateEIPInputs()" />
+          <div id="devicesFinancedDisplay"></div>
+          <div id="eipInputs"></div>
+          <button onclick="showPrevious('featuresCard')">Back</button>
+          <button onclick="handleEIPSelection()">Next</button>
+        </div>
 
-        <script src="script.js"></script>
+        <div id="taxCard" class="card" style="display:none;">
+          <h2>Total Tax</h2>
+          <p>Enter the total tax amount:</p>
+          <input type="number" id="totalTaxAmount" min="0" />
+          <button onclick="showPrevious('eipCard')">Back</button>
+          <button onclick="handleTaxSelection()">Next</button>
+        </div>
 
-  </body>
+        <div id="finalCardSummary" class="card" style="display:none;">
+          <!-- Final card to calculate bill -->
+          <button onclick="showPrevious('taxCard')">Back</button>
+          <button onclick="calculateCurrentBill()">Calculate Bill</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="summaryArea">
+      <h2>Current Plan Summary</h2>
+      <p id="summaryContent"></p>
+      <div id="totalMrcContainer" style="display:none;"></div>
+
+    </div>
+
+    <footer>
+      <button onclick="startOver()" class="neon-button">Reset</button>
+    </footer>
+  </div>
+  <!-- Closing .container div -->
+
+  <script src="script.js"></script>
+
+</body>
 
 </html>
