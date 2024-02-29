@@ -1,106 +1,164 @@
-/* General styles */
+/* Add the viewport meta tag to the HTML */
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 body {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  text-align: center; /* Center text */
 }
 
 h1 {
-  color: #E20074; /* T-Mobile Magenta */
-  font-size: 36px; /* Default font size */
-}
-
-#questionnaire {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
+  color: #e20074; /* T-Mobile Magenta */
 }
 
 .card {
-  background-color: white;
-  margin: 20px auto;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  max-width: 800px;
-  width: calc(100% - 40px); /* Adjusted width */
-}
-
-.card button, footer button, .neon-button {
-  background-color: #E20074; /* T-Mobile Magenta */
-  color: white;
-  padding: 16px 32px;
-  margin: 20px 10px;
+  padding: 20px;
+  margin: 10px auto;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+  background: linear-gradient(135deg, #e20074, #9e005f); /* Magenta deep gradient */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transform: translateX(-100%);
+  animation: slideIn 0.5s forwards;
+  display: flex; /* Add display flex */
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+@keyframes slideIn {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.card button {
+  background-color: #e20074; /* T-Mobile Magenta */
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 24px; /* Larger font size */
-  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
-.card button:hover, footer button:hover, .neon-button:hover {
-  background-color: #C10062; /* Darker Magenta */
+
+.card button:hover {
+  background-color: #c10062; /* Darker Magenta */
 }
 
-.card select, .card input[type="number"] {
-  width: calc(100% - 48px);
-  padding: 16px;
-  margin: 20px 0;
+.card .input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* Add margin to separate from buttons */
+}
+
+.card select,
+.card input[type="number"] {
+  width: 80%; /* Adjust width as needed */
+  padding: 10px;
+  margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 24px; /* Larger font size */
+  border-radius: 4px;
 }
 
-#summaryArea {
-  padding: 40px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  margin: 40px 0;
-  background-color: #fff;
-  width: calc(100% - 80px); /* Adjusted width */
-  max-width: 800px;
+.card-buttons {
+  display: flex;
+  justify-content: center;
 }
+
+/* Add styles for the "Current Plan Summary" section */
+#summaryArea {
+  padding: 20px; /* Increased padding for consistency */
+  border: none; /* Remove border */
+  border-radius: 8px;
+  margin: 10px auto; /* Adjust margin */
+  background: linear-gradient(to bottom right, #fff8e5, #ffd700); /* Off white to gold gradient */
+  width: 80%;
+  max-width: 600px; /* Match max-width with the card divs */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#summaryArea h2 {
+  color: #e20074; /* T-Mobile Magenta */
+  margin-bottom: 10px;
+}
+
+#summaryArea p {
+  margin-bottom: 10px;
+}
+
+#summaryArea .current-plan {
+  color: #e20074; /* T-Mobile Magenta */
+  font-weight: bold;
+}
+
 
 footer {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
-/* Responsive styles for mobile */
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 48px; /* Larger font size for mobile */
-  }
+footer button {
+  background-color: #004b93; /* A contrasting color, e.g., a shade of blue */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
-  .card {
-    padding: 40px; /* Larger padding for mobile */
-    width: calc(100% - 40px); /* Adjusted width for mobile */
-  }
+footer button:hover {
+  background-color: #003366; /* Darker shade for hover effect */
+}
 
-  .card button, footer button, .neon-button {
-    padding: 20px 40px; /* Larger button padding for mobile */
-    font-size: 32px; /* Larger font size for buttons on mobile */
-  }
+.neon-button {
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  background-color: #ff00ff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
+              0 0 20px rgba(255, 0, 255, 0.7), 
+              0 0 30px rgba(255, 0, 255, 0.7);
+  transition: all 0.3s ease;
+}
 
-  .card select, .card input[type="number"] {
-    padding: 20px; /* Larger input padding for mobile */
-    width: calc(100% - 40px); /* Adjusted input width for mobile */
-  }
+.neon-button:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 
+              0 0 30px rgba(255, 0, 255, 0.8), 
+              0 0 40px rgba(255, 0, 255, 0.8), 
+              0 0 50px rgba(255, 0, 255, 0.8), 
+              0 0 60px rgba(255, 0, 255, 0.8);
+}
 
-  #summaryArea {
-    padding: 40px; /* Larger padding for mobile */
-    width: calc(100% - 40px); /* Adjusted width for mobile */
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 3px #ff00ff, 0 0 5px #ff00ff;
   }
+  50% {
+    box-shadow: 0 0 10px #ff00ff, 0 0 15px #ff00ff;
+  }
+  100% {
+    box-shadow: 0 0 3px #ff00ff, 0 0 5px #ff00ff;
+  }
+}
 
-  footer {
-    margin-top: 80px; /* Increased margin top for footer on mobile */
-  }
+.neon-button {
+  animation: pulsate 2.5s infinite ease-in-out;
 }
