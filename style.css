@@ -121,18 +121,18 @@ footer button:hover {
   }
 
   .card button, footer button {
-    padding: 12px 24px; /* Adjust button padding for smaller screens */
+    padding: 20px 32px; /* Adjust button padding for smaller screens */
     margin: 10px 5px; /* Adjust button margin */
-    font-size: 18px; /* Adjust button font size */
+    font-size: 24px; /* Adjust button font size */
   }
 
   h1 {
-    font-size: 28px; /* Smaller font size on mobile */
+    font-size: 32px; /* Smaller font size on mobile */
   }
 
   .card select, .card input[type="number"] {
     width: calc(100% - 32px); /* Adjust for padding */
-    padding: 12px; /* Adjusted padding for smaller screens */
+    padding: 16px; /* Adjusted padding for smaller screens */
     margin: 10px 0; /* Adjusted margin for smaller screens */
   }
 }
