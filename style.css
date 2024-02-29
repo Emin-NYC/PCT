@@ -8,12 +8,27 @@ body {
   min-height: 100vh;
 }
 
+
+body, h1, .card, #summaryArea, footer {
+  text-align: center; /* Center text for these elements */
+}
+
+#questionnaire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 h1 {
   color: #E20074; /* T-Mobile Magenta */
   font-size: 28px; /* Larger font size */
 }
 
 .card {
+   display: flex;
+  flex-direction: column;
+  align-items: center; /* Aligns children (e.g., buttons, inputs) to the center */
   background-color: white;
   padding: 25px;
   margin: 15px auto;
