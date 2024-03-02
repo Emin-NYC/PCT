@@ -66,7 +66,7 @@ function handleFreeVoiceLinesSelection() {
   updateSummary('Free Voice Lines', numberOfFreeVoiceLines);
 
   var calculatedCost = calculateTotalLinesCost();
-  updateSummary('Total Lines Cost', '$' + calculatedCost);
+  updateSummary('Total Voice Lines Cost', '$' + calculatedCost);
 
   showCard('miLinesCard');
 }
