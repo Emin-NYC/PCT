@@ -18,6 +18,7 @@ body {
   text-align: center;
   color: #E20074; /* T-Mobile Magenta */
   margin-bottom: 20px;
+  font-size: 28px; /* Larger font size */
 }
 
 .card {
@@ -40,11 +41,12 @@ button {
   background: #E20074; /* T-Mobile Magenta */
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 16px 24px; /* Larger padding for buttons on mobile */
   margin: 10px 0;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
+  font-size: 18px; /* Larger font size for buttons on mobile */
 }
 
 button:hover,
@@ -69,7 +71,7 @@ button:focus {
 
 select#currentRatePlan {
   width: calc(100% - 42px); /* Adjusted width */
-  padding: 12px;
+  padding: 16px; /* Larger padding for select on mobile */
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -81,7 +83,7 @@ select#currentRatePlan {
 
 input[type="number"] {
   width: calc(100% - 42px); /* Adjusted width */
-  padding: 12px;
+  padding: 16px; /* Larger padding for input on mobile */
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -98,8 +100,8 @@ input[type="number"] {
   color: #fff;
   background-color: #ff00ff; /* Neon Magenta */
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 14px 24px; /* Larger padding for neon button on mobile */
+  font-size: 18px; /* Larger font size for neon button on mobile */
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
               0 0 20px rgba(255, 0, 255, 0.7), 
