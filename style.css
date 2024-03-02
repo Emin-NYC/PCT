@@ -1,145 +1,102 @@
-/* Add the viewport meta tag to the HTML */
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+/* Base styles */
 body {
-  font-family: 'Roboto', sans-serif; /* Use Roboto font */
-  background-color: #f8f8f8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
 }
 
-
-
-h1 {
-  color: #e20074; /* T-Mobile Magenta */
-}
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%; /* Full width */
+  max-width: 100%; /* Full width */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .header {
-  color: #e20074; /* T-Mobile Magenta */
-  margin-bottom: 20px; /* Adjust as needed */
-  text-align: center; /* Center the text */
+  text-align: center;
+  color: #E20074; /* T-Mobile Magenta */
+  margin-bottom: 20px;
 }
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; /* Adjust as needed */
-}
-
 
 .card {
-  padding: 40px; /* Increase padding */
-  margin: 20px auto; /* Add margin to center the card */
-  border: none;
-  border-radius: 8px;
-  text-align: center;
-  width: 320px; /* Set a fixed width */
-  height: 240px; /* Set a fixed height */
-  background: linear-gradient(135deg, #e20074, #9e005f); /* Magenta deep gradient */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
 }
 
-.card button {
-  background-color: #e20074; /* T-Mobile Magenta */
+/* Responsive design */
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+  }
+}
+
+/* Interactive elements */
+button {
+  background: #E20074; /* T-Mobile Magenta */
   color: white;
-  padding: 15px 30px; /* Increase padding */
-  margin: 20px 5px; /* Increase margin */
   border: none;
-  border-radius: 4px;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background 0.3s ease;
 }
 
-
-.card button:hover {
-  background-color: #c10062; /* Darker Magenta */
+button:hover,
+button:focus {
+  background: #C10062; /* Darker Magenta */
 }
 
-.card .input-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px; /* Add margin to separate from buttons */
+/* Spacing and Alignment */
+#summaryArea, #questionnaire, footer {
+  margin-bottom: 20px;
 }
 
-.card select,
-.card input[type="number"] {
-  width: calc(100% - 40px); /* Adjust width to accommodate margins */
-  padding: 10px;
+/* Additional Styling */
+.card h2 {
+  color: #E20074; /* T-Mobile Magenta */
+  margin-bottom: 15px;
+}
+
+.card p {
+  margin-bottom: 15px;
+}
+
+select#currentRatePlan {
+  width: calc(100% - 42px); /* Adjusted width */
+  padding: 12px;
   margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 18px; /* Larger font size */
+  font-weight: bold; /* Bold text */
+  color: #E20074; /* T-Mobile Magenta */
 }
 
-.card-buttons {
-  display: flex;
-  justify-content: center;
+input[type="number"] {
+  width: calc(100% - 42px); /* Adjusted width */
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 18px; /* Larger font size */
+  font-weight: bold; /* Bold text */
+  color: #E20074; /* T-Mobile Magenta */
 }
 
-/* Add styles for the "Current Plan Summary" section */
-#summaryArea {
-  padding: 20px; /* Increased padding for consistency */
-  border: none; /* Remove border */
-  border-radius: 8px;
-  margin: 20px auto; /* Adjust margin */
-  background: linear-gradient(to bottom right, #fff8e5, #ffd700); /* Off white to gold gradient */
-  width: calc(100% - 40px); /* Adjust width to accommodate margins */
-  max-width: 600px; /* Limit maximum width */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-#summaryArea h2 {
-  color: #e20074; /* T-Mobile Magenta */
-  margin-bottom: 10px;
-}
-
-#summaryArea p {
-  margin-bottom: 10px;
-}
-
-#summaryArea .current-plan {
-  color: #e20074; /* T-Mobile Magenta */
-  font-weight: bold;
-}
-
-
-footer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-footer button {
-  background-color: #004b93; /* A contrasting color, e.g., a shade of blue */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-footer button:hover {
-  background-color: #003366; /* Darker shade for hover effect */
-}
-
+/* Neon button */
 .neon-button {
   text-align: center;
   cursor: pointer;
   color: #fff;
-  background-color: #ff00ff;
+  background-color: #ff00ff; /* Neon Magenta */
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -147,7 +104,7 @@ footer button:hover {
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
               0 0 20px rgba(255, 0, 255, 0.7), 
               0 0 30px rgba(255, 0, 255, 0.7);
-  transition: all 0.3s ease;
+  animation: pulsate 2.5s infinite ease-in-out;
 }
 
 .neon-button:hover {
@@ -158,6 +115,7 @@ footer button:hover {
               0 0 60px rgba(255, 0, 255, 0.8);
 }
 
+/* Keyframes for pulsating effect */
 @keyframes pulsate {
   0% {
     box-shadow: 0 0 3px #ff00ff, 0 0 5px #ff00ff;
@@ -170,6 +128,17 @@ footer button:hover {
   }
 }
 
-.neon-button {
-  animation: pulsate 2.5s infinite ease-in-out;
+/* Center current plan summary */
+#summaryArea {
+  text-align: center;
+}
+
+/* Center reset button */
+footer {
+  text-align: center;
+}
+
+/* Disable zoom on input focus */
+input[type="number"], select#currentRatePlan {
+  touch-action: manipulation;
 }
