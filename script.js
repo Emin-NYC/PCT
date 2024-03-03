@@ -1,9 +1,11 @@
+// Event Listener for DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
   populateRatePlanOptions();
-  showCard('ratePlanCard');
+  applyFilter();
 });
 
 
+// Plan details object
 var planDetails = {
   "Magenta": {
     "baseCost": [70, 120], // Costs for 1 line and 2 lines
@@ -24,9 +26,29 @@ var planDetails = {
   // More plans can be added here in the same structure
 };
 
+
+// Global variables for current plan and line counts
 var currentPlan = '';
 var numberOfPaidVoiceLines = 0;
 var numberOfFreeVoiceLines = 0;
+
+
+// Global object to store filter settings
+var filterSettings = {
+  paidLines: true,
+  freeLines: true,
+  miLines: false,
+  features: false,
+  eip: false,
+  tax: false,
+};
+
+
+
+// Navigation stack for maintaining history
+var navigationStack = [];
+
+
 
 // Function to populate rate plan dropdown
 function populateRatePlanOptions() {
@@ -39,36 +61,152 @@ function populateRatePlanOptions() {
   }
 }
 
+
+
+
+
+// Function to apply filter settings
+function applyFilter() {
+  // Update settings based on checkboxes (Paid and Free Voice Lines are always true)
+  filterSettings.paidLines = true;
+  filterSettings.freeLines = true;
+  filterSettings.miLines = document.getElementById('filterMILines').checked;
+  filterSettings.features = document.getElementById('filterFeatures').checked;
+  filterSettings.eip = document.getElementById('filterEIP').checked;
+  filterSettings.tax = document.getElementById('filterTax').checked;
+
+  document.getElementById('filterModal').style.display = 'none';
+
+  startOver(); // Restart the flow
+}
+
+
+
+
+
+// Function to show the filter modal
+function showFilterModal() {
+  document.getElementById('filterModal').style.display = 'block';
+}
+
+
+
+// Function to show a specific card
 function showCard(cardId) {
   var cards = document.getElementsByClassName('card');
   for (var i = 0; i < cards.length; i++) {
     cards[i].style.display = 'none';
   }
+
   document.getElementById(cardId).style.display = 'block';
 }
+
+
+
+// Function to navigate to the next card
+function navigateToNextCard(currentCardId) {
+  var nextCardId = determineNextCard(currentCardId);
+
+  // Push the next card onto the stack before showing it
+  if (nextCardId !== 'ratePlanCard') {
+    navigationStack.push(nextCardId);
+  }
+
+  showCard(nextCardId);
+}
+
+
+
+// Function to determine the next card based on current card and filter settings
+function determineNextCard(currentCardId) {
+  switch (currentCardId) {
+    case 'ratePlanCard':
+      return filterSettings.paidLines ? 'paidVoiceLinesCard' :
+        filterSettings.freeLines ? 'freeVoiceLinesCard' :
+        filterSettings.miLines ? 'miLinesCard' :
+        filterSettings.features ? 'featuresCard' :
+        filterSettings.eip ? 'eipCard' :
+        filterSettings.tax ? 'taxCard' :
+        'finalCardSummary';
+
+    case 'paidVoiceLinesCard':
+      return filterSettings.freeLines ? 'freeVoiceLinesCard' :
+        filterSettings.miLines ? 'miLinesCard' :
+        filterSettings.features ? 'featuresCard' :
+        filterSettings.eip ? 'eipCard' :
+        filterSettings.tax ? 'taxCard' :
+        'finalCardSummary';
+
+    case 'freeVoiceLinesCard':
+      return filterSettings.miLines ? 'miLinesCard' :
+        filterSettings.features ? 'featuresCard' :
+        filterSettings.eip ? 'eipCard' :
+        filterSettings.tax ? 'taxCard' :
+        'finalCardSummary';
+
+    case 'miLinesCard':
+      return filterSettings.features ? 'featuresCard' :
+        filterSettings.eip ? 'eipCard' :
+        filterSettings.tax ? 'taxCard' :
+        'finalCardSummary';
+
+    case 'featuresCard':
+      return filterSettings.eip ? 'eipCard' :
+        filterSettings.tax ? 'taxCard' :
+        'finalCardSummary';
+
+    case 'eipCard':
+      return filterSettings.tax ? 'taxCard' :
+        'finalCardSummary';
+
+    case 'taxCard':
+      return 'finalCardSummary';
+
+    default:
+      return 'ratePlanCard';
+  }
+}
+
+
+// Handler functions for each card's button click
 
 function handleRatePlanSelection() {
   currentPlan = document.getElementById('currentRatePlan').value;
   resetSummaryFields();
   updateSummary('Current Plan', currentPlan);
-  showCard('paidVoiceLinesCard');
+  navigateToNextCard('ratePlanCard');
 }
+
+
 
 function handlePaidVoiceLinesSelection() {
   numberOfPaidVoiceLines = parseInt(document.getElementById('numberOfPaidVoiceLines').value) || 0;
-  updateSummary('Paid Voice Lines', numberOfPaidVoiceLines);
-  showCard('freeVoiceLinesCard');
+  updateSummary('Paid Voice', numberOfPaidVoiceLines);
+  navigateToNextCard('paidVoiceLinesCard');
 }
+
 
 
 function handleFreeVoiceLinesSelection() {
   numberOfFreeVoiceLines = parseInt(document.getElementById('numberOfFreeVoiceLines').value) || 0;
-  updateSummary('Free Voice Lines', numberOfFreeVoiceLines);
+  updateSummary('Free Voice', numberOfFreeVoiceLines);
 
   var calculatedCost = calculateTotalLinesCost();
-  updateSummary('Total Voice Lines Cost', '$' + calculatedCost);
+  updateSummary('Total Voice', '$' + calculatedCost);
 
-  showCard('miLinesCard');
+  navigateToNextCard('freeVoiceLinesCard');
+}
+
+
+
+function handleMISelection() {
+  var totalMIAmount = 0;
+  var numberOfLines = parseInt(document.getElementById('numberOfMILines').value) || 0;
+  for (var i = 1; i <= numberOfLines; i++) {
+    totalMIAmount += parseFloat(document.getElementById('miAmount' + i).value) || 0;
+  }
+  updateSummary('Total MI', '$' + totalMIAmount);
+  navigateToNextCard('miLinesCard');
 }
 
 
@@ -76,31 +214,35 @@ function handleFreeVoiceLinesSelection() {
 function handleFeaturesSelection() {
   var featuresAmount = parseFloat(document.getElementById('totalFeaturesAmount').value || 0);
   updateSummary('Total Features', '$' + featuresAmount);
-  showCard('eipCard');
+  navigateToNextCard('featuresCard');
 }
+
+
 
 function handleEIPSelection() {
   var totalEIP = 0;
-  var numberOfDevices = parseInt(document.getElementById('numberOfFinancedDevices').value || 0);
-
+  var numberOfDevices = parseInt(document.getElementById('numberOfFinancedDevices').value) || 0;
   for (var i = 1; i <= numberOfDevices; i++) {
-    var deviceAmount = parseFloat(document.getElementById('eipAmount' + i).value || 0);
-    totalEIP += deviceAmount;
+    totalEIP += parseFloat(document.getElementById('eipAmount' + i).value) || 0;
   }
-
   updateSummary('Total EIP', '$' + totalEIP);
-  showCard('taxCard'); // Proceed to final summary card
+  navigateToNextCard('eipCard');
 }
+
+
 
 function handleTaxSelection() {
   var taxAmount = parseFloat(document.getElementById('totalTaxAmount').value) || 0;
 
   updateSummary('Total Tax', '$' + taxAmount);
-  showCard('finalCardSummary');
+  navigateToNextCard('taxCard');
 }
 
 
+// Additional helper functions
 
+
+// Logic for generating MI inputs
 function generateMIInputs() {
   var numberOfLines = parseInt(document.getElementById('numberOfMILines').value) || 0;
   var miInputsContainer = document.getElementById('miInputs');
@@ -112,24 +254,13 @@ function generateMIInputs() {
     var input = document.createElement('input');
     input.type = 'number';
     input.id = 'miAmount' + (i + 1);
-    input.placeholder = 'Amount for MI line ' + (i + 1);
+    input.placeholder = 'Price of MI line ' + (i + 1);
     miInputsContainer.appendChild(input);
   }
 }
 
-function handleMISelection() {
-  var totalMIAmount = 0;
-  var numberOfLines = parseInt(document.getElementById('numberOfMILines').value) || 0;
-  for (var i = 1; i <= numberOfLines; i++) {
-    totalMIAmount += parseFloat(document.getElementById('miAmount' + i).value) || 0;
-  }
-  updateSummary('Total MI', '$' + totalMIAmount);
-  showCard('featuresCard');
-}
 
-// Modify calculateCurrentBill function to include MI total
-
-
+// Logic for generating EIP inputs
 function generateEIPInputs() {
   var numberOfDevices = parseInt(document.getElementById('numberOfFinancedDevices').value) || 0;
 
@@ -147,14 +278,13 @@ function generateEIPInputs() {
     var input = document.createElement('input');
     input.type = 'number';
     input.id = 'eipAmount' + (i + 1);
-    input.placeholder = 'Dollar amount for item ' + (i + 1);
+    input.placeholder = 'Price of item ' + (i + 1);
     eipInputsContainer.appendChild(input);
   }
 }
 
 
-
-
+// Logic for calculating total lines cost
 function calculateTotalLinesCost() {
   if (!currentPlan || numberOfPaidVoiceLines === 0) return 0;
 
@@ -175,6 +305,9 @@ function calculateTotalLinesCost() {
 
 
 
+
+
+// Logic for calculating current bill
 function calculateCurrentBill() {
   var featuresAmount = parseFloat(document.getElementById('totalFeaturesAmount').value) || 0;
   var eipTotal = 0;
@@ -206,6 +339,10 @@ function calculateCurrentBill() {
 
 
 
+
+
+
+// Logic for updating the summary
 function updateSummary(category, value) {
   var summaryContent = document.getElementById('summaryContent');
   var totalMrcContainer = document.getElementById('totalMrcContainer');
@@ -227,11 +364,11 @@ function updateSummary(category, value) {
 }
 
 
-
-function updateTotalMRC(totalMRC) {
-  var totalMrcContainer = document.getElementById('totalMrcContainer');
-  totalMrcContainer.innerHTML = '<strong>Total MRC: $' + totalMRC + '</strong>';
+function updateTotalVoiceLines() {
+  var totalVoiceLines = numberOfPaidVoiceLines + numberOfFreeVoiceLines;
+  updateSummary('Total Voice Lines', totalVoiceLines);
 }
+
 
 
 
@@ -245,21 +382,31 @@ function resetSummaryFields() {
 
 
 
-function showPrevious(previousCardId) {
-  showCard(previousCardId);
+
+
+function showPrevious() {
+  if (navigationStack.length > 0) {
+    navigationStack.pop(); // Remove the current card from the stack
+  }
+
+  // Determine the previous card to show
+  var previousCardId = navigationStack.length > 0 ?
+    navigationStack[navigationStack.length - 1] :
+    'ratePlanCard';
+
+  showCard(previousCardId); // Show the previous card
 }
 
+
+
+
+
+// Start over
 function startOver() {
   currentPlan = '';
   numberOfPaidVoiceLines = 0;
   numberOfFreeVoiceLines = 0;
-
-  document.getElementById('summaryContent').innerHTML = '';
-
+  resetSummaryFields();
+  navigationStack = [];
   showCard('ratePlanCard');
-
-  // Hide the totalMrcContainer
-  var totalMrcContainer = document.getElementById('totalMrcContainer');
-  totalMrcContainer.style.display = 'none';
-  totalMrcContainer.innerHTML = '';
 }
