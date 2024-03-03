@@ -4,21 +4,21 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f4f4f4;
-  margin: 0; /* Remove default body margin */
-  padding: 0; /* Remove default body padding */
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  width: 100%; /* Full width */
-  max-width: 100%; /* Full width */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .header {
   text-align: center;
-  color: #E20074; /* T-Mobile Magenta */
+  color: #E20074;
   margin-bottom: 20px;
-  font-size: 28px; /* Larger font size */
+  font-size: 28px;
 }
 
 .card {
@@ -38,30 +38,32 @@ body {
 
 /* Interactive elements */
 button {
-  background: #E20074; /* T-Mobile Magenta */
+  background: #E20074;
   color: white;
   border: none;
-  padding: 16px 24px; /* Larger padding for buttons on mobile */
+  padding: 16px 24px;
   margin: 10px 0;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
-  font-size: 18px; /* Larger font size for buttons on mobile */
+  font-size: 18px;
 }
 
 button:hover,
 button:focus {
-  background: #C10062; /* Darker Magenta */
+  background: #C10062;
 }
 
 /* Spacing and Alignment */
-#summaryArea, #questionnaire, footer {
+#summaryArea,
+#questionnaire,
+footer {
   margin-bottom: 20px;
 }
 
 /* Additional Styling */
 .card h2 {
-  color: #E20074; /* T-Mobile Magenta */
+  color: #E20074;
   margin-bottom: 15px;
 }
 
@@ -70,27 +72,27 @@ button:focus {
 }
 
 select#currentRatePlan {
-  width: calc(100% - 42px); /* Adjusted width */
-  padding: 16px; /* Larger padding for select on mobile */
+  width: calc(100% - 42px);
+  padding: 16px;
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  font-size: 18px; /* Larger font size */
-  font-weight: bold; /* Bold text */
-  color: #E20074; /* T-Mobile Magenta */
+  font-size: 18px;
+  font-weight: bold;
+  color: #E20074;
 }
 
 input[type="number"] {
-  width: calc(100% - 42px); /* Adjusted width */
-  padding: 16px; /* Larger padding for input on mobile */
+  width: calc(100% - 42px);
+  padding: 16px;
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  font-size: 18px; /* Larger font size */
-  font-weight: bold; /* Bold text */
-  color: #E20074; /* T-Mobile Magenta */
+  font-size: 18px;
+  font-weight: bold;
+  color: #E20074;
 }
 
 /* Neon button */
@@ -98,49 +100,106 @@ input[type="number"] {
   text-align: center;
   cursor: pointer;
   color: #fff;
-  background-color: #ff00ff; /* Neon Magenta */
+  background-color: #ff00ff;
   border: none;
-  padding: 14px 24px; /* Larger padding for neon button on mobile */
-  font-size: 18px; /* Larger font size for neon button on mobile */
+  padding: 14px 24px;
+  font-size: 18px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
-              0 0 20px rgba(255, 0, 255, 0.7), 
-              0 0 30px rgba(255, 0, 255, 0.7);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.7),
+    0 0 20px rgba(255, 0, 255, 0.7),
+    0 0 30px rgba(255, 0, 255, 0.7);
   animation: pulsate 2.5s infinite ease-in-out;
 }
 
 .neon-button:hover {
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 
-              0 0 30px rgba(255, 0, 255, 0.8), 
-              0 0 40px rgba(255, 0, 255, 0.8), 
-              0 0 50px rgba(255, 0, 255, 0.8), 
-              0 0 60px rgba(255, 0, 255, 0.8);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.8),
+    0 0 30px rgba(255, 0, 255, 0.8),
+    0 0 40px rgba(255, 0, 255, 0.8),
+    0 0 50px rgba(255, 0, 255, 0.8),
+    0 0 60px rgba(255, 0, 255, 0.8);
 }
 
-/* Keyframes for pulsating effect */
 @keyframes pulsate {
   0% {
     box-shadow: 0 0 3px #ff00ff, 0 0 5px #ff00ff;
   }
+
   50% {
     box-shadow: 0 0 10px #ff00ff, 0 0 15px #ff00ff;
   }
+
   100% {
     box-shadow: 0 0 3px #ff00ff, 0 0 5px #ff00ff;
   }
 }
 
-/* Center current plan summary */
 #summaryArea {
   text-align: center;
 }
 
-/* Center reset button */
 footer {
   text-align: center;
 }
 
-/* Disable zoom on input focus */
-input[type="number"], select#currentRatePlan {
+input[type="number"],
+select#currentRatePlan {
   touch-action: manipulation;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* Filter Modal Specific Styles */
+.modal-content h2 {
+  color: #E20074;
+  font-size: 24px;
+}
+
+.modal-content {
+  color: #333;
+  font-size: 18px;
+}
+
+.modal-content label {
+  color: #E20074;
+  font-weight: bold;
+}
+
+.modal-content input[type="checkbox"] {
+  accent-color: #E20074;
+}
+
+#filterModal button {
+  background-color: #E20074;
+  color: white;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+  transition: background 0.3s ease;
+}
+
+#filterModal button:hover {
+  background-color: #C10062;
 }
