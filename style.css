@@ -203,3 +203,152 @@ select#currentRatePlan {
 #filterModal button:hover {
   background-color: #C10062;
 }
+
+
+.future-card {
+  background: linear-gradient(to right, rgba(233, 30, 99, 0.1), rgba(156, 39, 176, 0.1));
+  /* Add other styling as needed to differentiate future cards */
+}
+
+/* Style for Rate Plan Dropdowns */
+select#currentRatePlan,
+select#futureRatePlan {
+  width: calc(100% - 42px);
+  /* Adjusted width */
+  padding: 16px;
+  /* Larger padding for select on mobile */
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 18px;
+  /* Larger font size */
+  font-weight: bold;
+  /* Bold text */
+  color: #E20074;
+  /* T-Mobile Magenta */
+}
+
+
+.plan-switch-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Plan switch button styles */
+.plan-button {
+  background: transparent;
+  /* Clear background */
+  border: 2px solid magenta;
+  /* Magenta border */
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: font-size 0.3s ease, font-weight 0.3s ease, color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  /* Transition for background-color */
+  color: magenta;
+  /* Default text color */
+}
+
+.plan-button.active {
+  font-weight: bold;
+  color: #8B008B;
+  /* Darker magenta when active */
+  font-size: 20px;
+  /* Increase font size when active */
+  border-color: #8B008B;
+  /* Darker border color for active state */
+  background: transparent;
+  /* Clear background for active state */
+}
+
+/* Specific style for Future Plan button when active */
+#futurePlanButton.active {
+  background: linear-gradient(to right, rgba(233, 30, 99, 0.1), rgba(156, 39, 176, 0.1));
+  /* Gradient background */
+}
+
+.plan-button:hover,
+.plan-button:focus {
+  background: transparent;
+  /* Ensure background remains clear on hover and focus */
+  border-color: #8B008B;
+  /* Darker border color on hover and focus */
+}
+
+.plan-button:active {
+  background: transparent;
+  /* Clear background on active state */
+  color: #8B008B;
+  /* Keep the darker text color */
+}
+
+
+/* Light magenta color for text of current and future plan buttons */
+#currentPlanButton,
+#futurePlanButton {
+  color: magenta;
+}
+
+/* Darker magenta color for text of current and future plan buttons when pressed */
+#currentPlanButton:active,
+#futurePlanButton:active {
+  color: #8B008B;
+  font-size: 20px;
+  /* Increase font size when button is pressed */
+}
+
+.plan-button.future-active {
+  background: linear-gradient(to right, rgba(233, 30, 99, 0.1), rgba(156, 39, 176, 0.1));
+  color: #8B008B;
+  /* Darker text color for better visibility */
+  font-weight: bold;
+  font-size: 20px;
+  /* Larger font size */
+  border-color: #8B008B;
+  /* Darker border color for consistency */
+}
+
+
+/* Summary Containers Styling */
+.summary-container {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* Future Summary Specific Styling */
+.future-summary.future-card {
+  background: linear-gradient(to right, rgba(233, 30, 99, 0.1), rgba(156, 39, 176, 0.1));
+}
+
+/* Additional Styling for Summary Cards */
+.summary-container .card h2 {
+  color: #E20074;
+  margin-bottom: 15px;
+}
+
+.summary-container .card p {
+  margin-bottom: 15px;
+}
+
+.card .final-card-button-container {
+  text-align: center;
+}
+
+.card .final-card-button-container button {
+  margin: 10px;
+}
+
+#finalCardSummary button:first-child {
+  margin-left: 10px;
+  /* Adjust the margin as needed */
+}
+
+
+#futureFinalCardSummary button:first-child {
+  margin-left: 10px;
+  /* Adjust the margin as needed */
+}
