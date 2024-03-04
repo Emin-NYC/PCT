@@ -14,6 +14,12 @@
     <div class="container">
       <h1 class="header">Plan Comparison Tool</h1>
 
+      <!-- Plan Switch Buttons -->
+      <div class="plan-switch-buttons">
+        <button id="currentPlanButton" class="plan-button active" onclick="switchToCurrentPlan()">Current Plan</button>
+        <button id="futurePlanButton" class="plan-button" onclick="switchToFuturePlan()">Future Plan</button>
+      </div>
+
       <!-- Cards Container -->
       <div class="cards-container">
 
@@ -33,17 +39,19 @@
 
         <!-- Questionnaire Section -->
         <div id="questionnaire">
-          <!-- Rate Plan Card -->
+          <!-- Current Rate Plan Card -->
           <div id="ratePlanCard" class="card">
-            <h2>Current Rate Plan</h2>
-            <p>Select your current rate plan:</p>
+            <h2>Current Plan</h2>
+            <p>Select your current plan:</p>
             <select id="currentRatePlan"></select>
             <button onclick="handleRatePlanSelection()">Next</button>
           </div>
 
+
+
           <!-- Paid Voice Lines Card -->
           <div id="paidVoiceLinesCard" class="card" style="display:none;">
-            <h2>Paid Voice Lines</h2>
+            <h2>Current Paid Voice Lines</h2>
             <p>Enter current number of PAID voice lines:</p>
             <input type="number" id="numberOfPaidVoiceLines" min="1" />
             <button onclick="showPrevious('ratePlanCard')">Back</button>
@@ -52,7 +60,7 @@
 
           <!-- Free Voice Lines Card -->
           <div id="freeVoiceLinesCard" class="card" style="display:none;">
-            <h2>Free Voice Lines</h2>
+            <h2>Current Free Voice Lines</h2>
             <p>Enter current number of FREE voice lines:</p>
             <input type="number" id="numberOfFreeVoiceLines" min="0" />
             <button onclick="showPrevious('paidVoiceLinesCard')">Back</button>
@@ -61,7 +69,7 @@
 
           <!-- Total MI Lines Card -->
           <div id="miLinesCard" class="card" style="display:none;">
-            <h2>Total MI Lines</h2>
+            <h2>Current MI Lines</h2>
             <p>How many MI lines currently?</p>
             <input type="number" id="numberOfMILines" min="0" onchange="generateMIInputs()" />
             <div id="miInputs"></div>
@@ -71,7 +79,7 @@
 
           <!-- Total Features Card -->
           <div id="featuresCard" class="card" style="display:none;">
-            <h2>Total Features</h2>
+            <h2>Current Features</h2>
             <p>Enter the total feature(s) dollar amount:</p>
             <input type="number" id="totalFeaturesAmount" min="0" />
             <button onclick="showPrevious('freeVoiceLinesCard')">Back</button>
@@ -80,7 +88,7 @@
 
           <!-- Total EIP Card -->
           <div id="eipCard" class="card" style="display:none;">
-            <h2>Total EIP</h2>
+            <h2>Current EIP</h2>
             <p>How many items are financed currently?</p>
             <input type="number" id="numberOfFinancedDevices" min="0" max="20" onchange="generateEIPInputs()" />
             <div id="devicesFinancedDisplay"></div>
@@ -91,36 +99,139 @@
 
           <!-- Total Tax Card -->
           <div id="taxCard" class="card" style="display:none;">
-            <h2>Total Tax</h2>
+            <h2>Current Tax</h2>
             <p>Enter the total tax amount:</p>
             <input type="number" id="totalTaxAmount" min="0" />
             <button onclick="showPrevious('eipCard')">Back</button>
             <button onclick="handleTaxSelection()">Next</button>
           </div>
 
+
+
+
+
           <!-- Final Card Summary -->
           <div id="finalCardSummary" class="card" style="display:none;">
             <button onclick="showPrevious('taxCard')">Back</button>
-            <button onclick="calculateCurrentBill()">Calculate Bill</button>
+            <button onclick="calculateCurrentBill()">Calculate Current</button>
+          </div>
+
+
+
+
+          <!-- Future Plan Cards -->
+
+
+          <!-- Future Rate Plan Card -->
+          <div id="futureRatePlanCard" class="card future-card" style="display:none;">
+            <h2>Future Plan</h2>
+            <p>Select your future plan:</p>
+            <select id="futureRatePlan"></select>
+            <button onclick="handleFutureRatePlanSelection()">Next</button>
+          </div>
+
+
+          <!-- Future Paid Voice Lines Card -->
+          <div id="futurePaidVoiceLinesCard" class="card future-card" style="display:none;">
+            <h2>Future Paid Voice Lines</h2>
+            <p>Enter future number of PAID voice lines:</p>
+            <input type="number" id="futureNumberOfPaidVoiceLines" min="1" />
+            <button onclick="showPrevious('futureRatePlanCard')">Back</button>
+            <button onclick="handleFuturePaidVoiceLinesSelection()">Next</button>
+          </div>
+
+          <!-- Future Free Voice Lines Card -->
+          <div id="futureFreeVoiceLinesCard" class="card future-card" style="display:none;">
+            <h2>Future Free Voice Lines</h2>
+            <p>Enter future number of FREE voice lines:</p>
+            <input type="number" id="futureNumberOfFreeVoiceLines" min="0" />
+            <button onclick="showPrevious('futurePaidVoiceLinesCard')">Back</button>
+            <button onclick="handleFutureFreeVoiceLinesSelection()">Next</button>
+          </div>
+
+          <!-- Future Total MI Lines Card -->
+          <div id="futureMILinesCard" class="card future-card" style="display:none;">
+            <h2>Future MI Lines</h2>
+            <p>How many MI lines added in the future?</p>
+            <input type="number" id="futureNumberOfMILines" min="0" onchange="generateFutureMIInputs()" />
+            <div id="futureMIInputs"></div>
+            <button onclick="showPrevious('futureFreeVoiceLinesCard')">Back</button>
+            <button onclick="handleFutureMISelection()">Next</button>
+          </div>
+
+          <!-- Future Total Features Card -->
+          <div id="futureFeaturesCard" class="card future-card" style="display:none;">
+            <h2>Future Features</h2>
+            <p>Enter the total future feature(s) dollar amount:</p>
+            <input type="number" id="futureTotalFeaturesAmount" min="0" />
+            <button onclick="showPrevious('futureMILinesCard')">Back</button>
+            <button onclick="handleFutureFeaturesSelection()">Next</button>
+          </div>
+
+          <!-- Future Total EIP Card -->
+          <div id="futureEIPCard" class="card future-card" style="display:none;">
+            <h2>Future EIP</h2>
+            <p>How many items will be financed in the future?</p>
+            <input type="number" id="futureNumberOfFinancedDevices" min="0" max="20" onchange="generateFutureEIPInputs()" />
+            <div id="futureDevicesFinancedDisplay"></div>
+            <div id="futureEIPInputs"></div>
+            <button onclick="showPrevious('futureFeaturesCard')">Back</button>
+            <button onclick="handleFutureEIPSelection()">Next</button>
+          </div>
+
+          <!-- Future Total Tax Card -->
+          <div id="futureTaxCard" class="card future-card" style="display:none;">
+            <h2>Future Tax</h2>
+            <p>Enter the total future tax dollar amount:</p>
+            <input type="number" id="futureTotalTaxAmount" min="0" />
+            <button onclick="showPrevious('futureEIPCard')">Back</button>
+            <button onclick="handleFutureTaxSelection()">Next</button>
+          </div>
+
+          <!-- Future Final Card Summary -->
+          <div id="futureFinalCardSummary" class="card future-card" style="display:none;">
+            <button onclick="showPrevious('futureTaxCard')">Back</button>
+            <button onclick="calculateFutureBill()">Calculate Future</button>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <!-- Summary Areas -->
+      <div class="summary-areas">
+        <!-- Current Plan Summary Container -->
+        <div class="summary-container current-summary">
+          <div id="currentPlanSummary" class="card">
+            <h2>Current Plan</h2>
+            <p id="summaryContent"></p>
+            <div id="totalMrcContainer" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- Future Plan Summary Container -->
+        <div class="summary-container future-summary">
+          <div id="futurePlanSummary" class="card future-card">
+            <h2>Future Plan</h2>
+            <p id="futureSummaryContent"></p>
+            <div id="futureTotalMrcContainer" style="display:none;"></div>
           </div>
         </div>
       </div>
 
-      <!-- Summary Area -->
-      <div id="summaryArea">
-        <h2>Current Plan Summary</h2>
-        <p id="summaryContent"></p>
-        <div id="totalMrcContainer" style="display:none;"></div>
-      </div>
+
 
       <!-- Footer Section -->
       <footer>
         <div class="button-container">
-          <button onclick="startOver()" class="neon-effect">Reset</button>
+          <button id="resetButton" onclick="startOver()" class="neon-effect">Reset</button>
           <button onclick="showFilterModal()" class="neon-effect">Filter</button>
         </div>
       </footer>
     </div>
+
+
 
     <!-- JavaScript File -->
     <script src="script.js"></script>
