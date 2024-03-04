@@ -110,8 +110,8 @@
 
 
 
-          <!-- Final Card Summary -->
-          <div id="finalCardSummary" class="card" style="display:none;">
+          <!-- Current Plan Final Card Summary -->
+          <div id="finalCardSummary" class="card final-card-button-container" style="display:none;">
             <button onclick="showPrevious('taxCard')">Back</button>
             <button onclick="calculateCurrentBill()">Calculate Current</button>
           </div>
@@ -188,11 +188,13 @@
             <button onclick="handleFutureTaxSelection()">Next</button>
           </div>
 
-          <!-- Future Final Card Summary -->
-          <div id="futureFinalCardSummary" class="card future-card" style="display:none;">
+          <!-- Future Plan Final Card Summary -->
+          <div id="futureFinalCardSummary" class="card future-card final-card-button-container" style="display:none;">
             <button onclick="showPrevious('futureTaxCard')">Back</button>
             <button onclick="calculateFutureBill()">Calculate Future</button>
           </div>
+
+
 
         </div>
       </div>
