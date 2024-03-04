@@ -342,13 +342,61 @@ select#futureRatePlan {
   margin: 10px;
 }
 
-#finalCardSummary button:first-child {
-  margin-left: 10px;
-  /* Adjust the margin as needed */
+
+
+/* Adjust the margin and padding for the final card buttons */
+#finalCardSummary button {
+  margin: 10px 5px;
+  padding: 10px 20px;
+}
+
+/* Adjust the margin and padding for the future final card buttons */
+#futureFinalCardSummary button {
+  margin: 10px 5px;
+  padding: 10px 20px;
 }
 
 
-#futureFinalCardSummary button:first-child {
-  margin-left: 10px;
-  /* Adjust the margin as needed */
+/* Adjust the alignment for the final card buttons */
+.final-card-button-container {
+  text-align: center; /* Center align the content */
+}
+
+.final-card-button-container button {
+  display: inline-block; /* Make buttons inline-block for centering */
+  margin: 10px 5px; /* Adjust margin for spacing */
+  padding: 10px 20px; /* Padding for buttons */
+}
+
+
+/* Adjust the margin and padding for the final card buttons */
+.final-card-button-container button {
+  margin: 0 10px; /* Adjust margin as needed */
+  padding: 10px 20px; /* Adjust padding as needed */
+}
+
+
+/* Adjust the alignment for the final card buttons */
+#futureFinalCardSummary .final-card-button-container {
+  display: flex;
+  justify-content: center; /* Center align horizontally */
+  margin-top: 20px; /* Add some top margin for spacing */
+}
+
+/* Adjust the margin and padding for the future final card buttons */
+#futureFinalCardSummary .final-card-button-container button {
+  margin: 0 5px; /* Adjust margin as needed */
+  padding: 10px 20px;
+  text-align: center; /* Center align the text within the buttons */
+}
+
+/* Future Final Card Summary Styling */
+#futureFinalCardSummary {
+  text-align: center; /* Center align content */
+}
+
+#futureFinalCardSummary button {
+  display: inline-block; /* Make buttons inline-block for centering */
+  margin: 10px 5px; /* Adjust margin for spacing */
+  padding: 10px 20px; /* Padding for buttons */
 }
